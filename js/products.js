@@ -35,10 +35,12 @@ function showCategoriesList(data){
  
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(CAT_CARS).then(function(resultObj){
+    getJSONData(`${PRODUCTS_URL}${localStorage.getItem("catID")}.json`).then(function(resultObj){
         if (resultObj.status === "ok")
         {
              showCategoriesList(resultObj.data)
         }
     });
 });
+
+ 
