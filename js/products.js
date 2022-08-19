@@ -35,7 +35,7 @@ function showCategoriesList(data){
  
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(`${PRODUCTS_URL}${localStorage.getItem("catID")}.json`).then(function(resultObj){
+    getJSONData(`${PRODUCTS_URL}${localStorage.getItem("catID")}${EXT_TYPE}`).then(function(resultObj){
         if (resultObj.status === "ok")
         {
              showCategoriesList(resultObj.data)
