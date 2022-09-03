@@ -18,25 +18,31 @@ ver.addEventListener("click", function(){
     }
 })
 
- 
+
+
+
+
+
 // Función para validar la entrada del usuario
 document.addEventListener("DOMContentLoaded", function() {
+    
     document.getElementById("form_login").addEventListener('submit', validarFormulario); 
-  
+    
   
 });
 
 
-  function validarFormulario(e) {
+
+function validarFormulario(e) {
     e.preventDefault(); 
-    var usuario = document.getElementById('usuario').value.replace(/\s/gi,''); // Elimina los espacios en blanco
-    var clave = document.getElementById('clave').value.replace(/\s/gi,'');
+    var usuario = document.getElementById('usuario').value.replace(/\s/gi,'');
+    var clave = document.getElementById('clave').value.replace(/\s/gi,''); // Elimina los espacios en blanco
     if(usuario.length == 0 && clave.length == 0  ) {
-      return;
+      return false;
     }  else {
-        window.location.href = "inicio.html"    
+        localStorage.setItem("perfil",usuario)
+        window.location.href = "inicio.html"
     } 
     
-  }
+  } 
 
- 

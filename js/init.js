@@ -8,6 +8,34 @@ const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    
+      if (localStorage.getItem("perfil")){
+        document.getElementById("user").innerHTML =  
+        `
+        <div class="btn-group">
+         
+        <a href="my-profile.html"><button  type="button"class="btn cntr">${localStorage.getItem("perfil")}</button></a>
+          <button type="button" class="btn cntr dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only" ></span>
+          </button> 
+        
+          <div class="dropdown-menu esp">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item salir" onclick="salir()">Salir</a>
+          </div>
+        
+        </div>`
+
+      }else{
+        window.location.href = "index.html"
+      }  
+} )
+
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -40,3 +68,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+ 
+
+ function salir(){
+      localStorage.clear("perfil") 
+      window.location.href = "index.html"
+ }

@@ -9,8 +9,15 @@
   font-weight: bold;
 }
 
+nav a:hover{
+  color:rgba(255, 255, 255, 0.74)
+}
+ 
+
+
 nav a {
   text-decoration: none;
+  color: rgb(255, 255, 255);
 }
 
 .bd-placeholder-img {
@@ -262,4 +269,71 @@ h1{
 
 .formulario__input-error-activo {
 	display: block;
+}
+
+/* nav-cosito */
+
+.esp {
+  margin-top: 38px;
+
+}
+
+.cntr{
+  
+  color: rgb(255, 244, 244);
+}
+
+.cntr:hover{
+  color:white
+}
+.cntr:focus{
+  box-shadow: none;
+   
+}
+
+.salir{
+  color: red;
+}
+
+.salir:hover{
+  color: rgb(204, 18, 18);
+  cursor: pointer;
+}
+
+
+/* Input filtro */ 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }
+
+ /* Info de productos */
+ .coso_q_gira img{
+  width: 100%;
+ 
+}
+.coso_q_gira{
+  width: 500px;
+  margin: 80px 30px 20px 100px;
+ 
+}
+.imagenesdelcoso{
+  display : flex;
+  flex-direction: row;  
+}
+.div_infos{
+    
+  width: 400px;
+  margin: 80px 100px 20px 30px;
+  border-bottom: 1px solid black;
+}
+.nombre_del{
+  padding-bottom: 5px;
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.precio_del{
+  padding-bottom: 30px;
 }

@@ -1,46 +1,148 @@
- 
+let array = [];
+let mini;
+let maxi;  
+const precio_ascendente = "xd"
+const precio_descendente = "xdx"
+const relev  = "xdxd"
+
+function ordenarTodo(criteria, array){
+    let result = [];
+     if (criteria === precio_ascendente){
+        result = array.sort(function(a, b) {
+            if ( a.cost > b.cost ){ return -1; }
+            if ( b.cost < b.cost ){ return 1; }
+            return 0;
+        });
+    } if (criteria === precio_descendente){
+        result = array.sort(function(a, b) {
+            if ( a.cost < b.cost ){ return -1; }
+            if ( b.cost > b.cost ){ return 1; }
+            return 0;
+        });
+    } if (criteria === relev){
+        result = array.sort(function(a,b){
+            if (a.soldCount > b.soldCount){return -1}
+            return 0;
+        })
+    }
+
+    return result;
+} 
+
 
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
-function showCategoriesList(data){
-    const array = data.products    // Constante para ingresar al array
+function listaDeProductos(){
     let htmlContentToAppend = "";
     for(let i = 0; i < array.length; i++){ 
         let category = array [i];
         
+         if (((mini == undefined && maxi == undefined) || (mini == undefined && category.cost <= maxi))  ||
+            ((maxi == undefined && category.cost >= mini)) ||(category.cost <= maxi && category.cost >= mini)){
+        
         htmlContentToAppend += `
-       
-        <div class="list-group-item list-group-item-action">
+ 
+        <div class="list-group-item list-group-item-action" onclick="info_Pro(${category.id})" role='button' >
             <div class="row">
                 <div class="col-3">
-                    <img src ="` + category.image + `" alt="product image" class="img-thumbnail">
+                    <img src ="${category.image} " alt="product image" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1">
-                        <h4>`+ category.name + " - " + category.currency +" "+category.cost + `</h4> 
-                        <p> `+ category.description +`</p> 
+                            <h4> ${category.name}  -  ${category.currency} ${category.cost} </h4> 
+                            <p> ${category.description} </p> 
                         </div>
-                        <small class="text-muted">` + category.soldCount + ` artículos</small> 
+                        <small class="text-muted"> ${category.soldCount} vendidos</small> 
                     </div>
-        
                 </div>
-            </div>
+            </div>  
         </div>
         `
+        }
     }
-        
         document.getElementById("cat-list-cars").innerHTML  = htmlContentToAppend; 
-        document.getElementById("cat_name").innerHTML = data.catName
+           
 }
+// orden
  
+function pumba(sortCriteria, categoriesArray){
+    currentSortCriteria = sortCriteria;
 
-document.addEventListener("DOMContentLoaded", function(e){
+    if(categoriesArray != undefined){
+        array = categoriesArray;
+    }
+
+    array = ordenarTodo(currentSortCriteria, array);
+
+    //Muestro las categorías ordenadas
+    listaDeProductos();
+}
+
+// petición web
+document.addEventListener("DOMContentLoaded", function(){
+     
     getJSONData(`${PRODUCTS_URL}${localStorage.getItem("catID")}${EXT_TYPE}`).then(function(resultObj){
         if (resultObj.status === "ok")
-        {
-             showCategoriesList(resultObj.data)
+        { 
+             let array1 = resultObj.data  // Constante para ingresar al array
+             let productoZ = array1.catName
+             document.getElementById("cat_name").innerHTML = productoZ 
+             array = array1.products  
+             listaDeProductos(array)
         }
     });
-});
+   
+    document.getElementById("rangoFiltrar").addEventListener("click", function (){
+        
+        if (document.getElementById("minimo").value  != ""){
+          mini = parseInt(document.getElementById("minimo").value);
+        }else{
+        mini = undefined
+        }
+        if (document.getElementById("maximo").value  != ""){
+        maxi = parseInt(document.getElementById("maximo").value);
+        }else{
+        maxi = undefined
+        }
+        
+        listaDeProductos()
+
+    })
+   
+    document.getElementById("limpiarFiltro").addEventListener("click", function (){
+      document.getElementById("minimo").value = "";
+      document.getElementById("maximo").value = "";
+
+      mini= undefined;
+      maxi = undefined;
+
+      listaDeProductos();
+    } )
+
+    document.getElementById("descendente").addEventListener("click", function(){
+       pumba(precio_descendente)
+   
+    })
+
+    document.getElementById("ascendente").addEventListener("click", function(){
+        pumba(precio_ascendente)
+    
+     })
+     document.getElementById("relev").addEventListener("click", function(){
+        pumba(relev)
+    
+     })
+
+})
+
+/* Modifica products.html para que cada vez que el usuario seleccione un producto, su identificador se guarde en el almacenamiento local y se redirija a product-info.html */ 
+
+
+
+function info_Pro(id){
+    localStorage.setItem("identi", id);
+    window.location.href = "product-info.html"
+   
+}
 
  
