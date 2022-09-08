@@ -1,9 +1,9 @@
 let array = [];
 let mini;
 let maxi;  
-const precio_ascendente = "xd"
-const precio_descendente = "xdx"
-const relev  = "xdxd"
+const precio_ascendente = "mas"
+const precio_descendente = "menos"
+const relev  = "art"
 
 function ordenarTodo(criteria, array){
     let result = [];
@@ -65,14 +65,11 @@ function listaDeProductos(){
 }
 // orden
  
-function pumba(sortCriteria, categoriesArray){
-    currentSortCriteria = sortCriteria;
+function ordenarMostrarProd(sortCriteria, productArray){
+ 
 
-    if(categoriesArray != undefined){
-        array = categoriesArray;
-    }
-
-    array = ordenarTodo(currentSortCriteria, array);
+ 
+    array = ordenarTodo(sortCriteria, array);
 
     //Muestro las categorías ordenadas
     listaDeProductos();
@@ -120,16 +117,16 @@ document.addEventListener("DOMContentLoaded", function(){
     } )
 
     document.getElementById("descendente").addEventListener("click", function(){
-       pumba(precio_descendente)
+        ordenarMostrarProd(precio_descendente)
    
     })
 
     document.getElementById("ascendente").addEventListener("click", function(){
-        pumba(precio_ascendente)
+        ordenarMostrarProd(precio_ascendente)
     
      })
      document.getElementById("relev").addEventListener("click", function(){
-        pumba(relev)
+        ordenarMostrarProd(relev)
     
      })
 

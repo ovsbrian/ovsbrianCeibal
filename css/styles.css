@@ -337,3 +337,26 @@ input[type=number] { -moz-appearance:textfield; }
 .precio_del{
   padding-bottom: 30px;
 }
+ 
+
+.h2_com{
+  margin: 80px 100px 20px 30px;
+}
+ 
+.comentarios_comunidad {
+  margin:  4px 100px 0px 30px;
+  border-left: #151a1f solid 2px;
+  padding: 20px;
+}
+
+
+.dejar_comentario{
+  margin:  4px 100px 0px 30px;
+}
+
+
+.stars{float: right;}  
+
+textarea{
+  resize: none;
+}
