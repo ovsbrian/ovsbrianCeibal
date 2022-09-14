@@ -349,14 +349,47 @@ input[type=number] { -moz-appearance:textfield; }
   padding: 20px;
 }
 
-
+.dejar_comentario h3 {
+  margin-top: 30px;
+}
 .dejar_comentario{
   margin:  4px 100px 0px 30px;
+  display: inline-block;
 }
-
-
-.stars{float: right;}  
+.caja_mensaje{
+  border-radius: 10px;
+  width: 80%;
+  display: inline-block;
+  height: 50%;
+  border: 1px solid #505050;
+}
+.caja_mensaje_enviar  {
+  cursor: pointer;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  height: 50%;
+  margin-left: 40px;
+  padding: 16px 0;
+  vertical-align: top;
+  width: 15%;
+  border: 1px solid #505050;
+}
+.stars{
+  float: right;
+  
+}  
 
 textarea{
   resize: none;
+}
+select{
+  width: 120px;
+  height: 30px;
+  padding: 5px;
+}
+
+
+.c_g{
+ text-align: center;
 }

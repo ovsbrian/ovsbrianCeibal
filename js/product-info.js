@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
       { 
         let array_comentario_data = resultObj.data
         comentarios(array_comentario_data)
-        console.log(array_comentario_data) 
+        
       }
   });
 })
@@ -26,7 +26,7 @@ function infoDeProducts(a){
         <h2 class="nombre_del"> ${a.name} </h2>
         <h3 class="precio_del"> ${a.currency} <b> ${a.cost}</b>  </h3>
         <p> ${a.description} </p>
-        <h6> Este articulo pertenece a la categoria de  ${a.category.toLowerCase()} </h6>
+        <h6> Este articulo pertenece a la categoria de <b>${a.category.toLowerCase()}</b></h6>
     </div> `
 
        
@@ -62,41 +62,37 @@ function infoDeProducts(a){
            
 }
 
+function no_ref (e){
+  e.preventDefault() 
+} 
 
 function comentarios (a){
    
   let oa = ""
   oa +=  ` <h2 class="h2_com">Comentarios de la comunidad: </h2>`
   for(i=0; i < a.length ; i++){
-    
+     score = a[i].score 
      oa +=
      `
- 
       <div class="comentarios_comunidad"><b>${a[i].user}</b> - ${a[i].dateTime} - 
-    
-       
-      <span class="stars fa fa-star"  ></span>
-      <span class="stars fa fa-star"></span>
-      <span class="stars fa fa-star"></span>
-      <span class="stars fa fa-star"></span>
-      <span class="stars fa fa-star"></span> 
-      
-    <br> ${a[i].description}  </div> 
+      <span class="stars fa fa-star checked"></span>  
+        <br> ${a[i].description} 
+      </div> 
      
-     `
-     
+     `  
   }
-  let zaz =""
-  zaz += ` 
-  <div class="dejar_comentario">
-  <h3>Deja tu comentario sobre éste artículo!</h3>
-  <textarea  class="w-100 p-5" > </textarea> 
-  
- 
-  <h4>Deja tu clasificación</h4>
-  </div> 
-  `
-  document.getElementById("comentarios_user").innerHTML += zaz
+    
   
   document.getElementById("xdxdxdc").innerHTML  += oa; 
   } 
+
+  
+  document.getElementById("xaaaaa").addEventListener('click', function(e){
+    e.preventDefault()
+  
+    document.getElementById("ax").value = "";
+    document.getElementById( "opc" ).value = 1;
+
+
+    
+  }) 

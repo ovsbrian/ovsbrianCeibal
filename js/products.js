@@ -41,7 +41,7 @@ function listaDeProductos(){
         
         htmlContentToAppend += `
  
-        <div class="list-group-item list-group-item-action" onclick="info_Pro(${category.id})" role='button' >
+        <div class="list-group-item list-group-item-action" onclick="info_Pro(${category.id})" role="button" >
             <div class="row">
                 <div class="col-3">
                     <img src ="${category.image} " alt="product image" class="img-thumbnail">
