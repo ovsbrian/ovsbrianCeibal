@@ -61,10 +61,7 @@ function infoDeProducts(a){
     document.getElementById("container_prod_inf").innerHTML  += contenido; 
            
 }
-
-function no_ref (e){
-  e.preventDefault() 
-} 
+ 
 
 function comentarios (a){
   
