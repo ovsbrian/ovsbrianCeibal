@@ -375,11 +375,6 @@ input[type=number] { -moz-appearance:textfield; }
   width: 15%;
   border: 1px solid #505050;
 }
-.stars{
-  float: right;
-  
-}  
-
 textarea{
   resize: none;
 }
@@ -388,8 +383,11 @@ select{
   height: 30px;
   padding: 5px;
 }
-
-
 .c_g{
  text-align: center;
 }
+ 
+.estreia{
+  float: right;
+}
+ 

@@ -57,8 +57,8 @@ function infoDeProducts(a){
 
 
     
-    document.getElementById("xdxdxd").innerHTML  += htmlContentToAppend; 
-    document.getElementById("xdxdxd").innerHTML  += contenido; 
+    document.getElementById("container_prod_inf").innerHTML  += htmlContentToAppend; 
+    document.getElementById("container_prod_inf").innerHTML  += contenido; 
            
 }
 
@@ -67,15 +67,14 @@ function no_ref (e){
 } 
 
 function comentarios (a){
-   
-  let oa = ""
-  oa +=  ` <h2 class="h2_com">Comentarios de la comunidad: </h2>`
+  
+  let html = ""
+  html +=  ` <h2 class="h2_com">Comentarios de la comunidad: </h2>`
   for(i=0; i < a.length ; i++){
-     score = a[i].score 
-     oa +=
+  
+     html +=
      `
-      <div class="comentarios_comunidad"><b>${a[i].user}</b> - ${a[i].dateTime} - 
-      <span class="stars fa fa-star checked"></span>  
+      <div  class="comentarios_comunidad"><b>${a[i].user}</b> - ${a[i].dateTime} - <div class="estreia">${estrellas(a[i].score)}</div> 
         <br> ${a[i].description} 
       </div> 
      
@@ -83,16 +82,19 @@ function comentarios (a){
   }
     
   
-  document.getElementById("xdxdxdc").innerHTML  += oa; 
+  document.getElementById(" comentarios_info_com").innerHTML  += html; 
   } 
 
   
-  document.getElementById("xaaaaa").addEventListener('click', function(e){
+  document.getElementById("enviar_info_coment_com").addEventListener('click', function(e){
     e.preventDefault()
-  
     document.getElementById("ax").value = "";
-    document.getElementById( "opc" ).value = 1;
-
-
-    
+    document.getElementById("select_numb").value = 1;
   }) 
+
+  function estrellas (puntaje){
+    let estrellas_c = ""
+    for (let i = 1; i <= puntaje; i++){estrellas_c +=`<span class="stars fa fa-star checked"></span>`}
+    for(puntaje;puntaje<5;puntaje++){estrellas_c +=`<span class="stars fa fa-star"></span>`}
+    return estrellas_c; 
+  }

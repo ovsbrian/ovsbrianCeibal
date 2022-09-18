@@ -139,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function(){
 function info_Pro(id){
     localStorage.setItem("identi", id);
     window.location.href = "product-info.html"
-   
 }
 
  
