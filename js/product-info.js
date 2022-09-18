@@ -77,15 +77,13 @@ function comentarios (a){
      
      `  
   }
-    
-  
   document.getElementById(" comentarios_info_com").innerHTML  += html; 
   } 
 
   
   document.getElementById("enviar_info_coment_com").addEventListener('click', function(e){
     e.preventDefault()
-    document.getElementById("ax").value = "";
+    document.getElementById("text_area_comen").value = "";
     document.getElementById("select_numb").value = 1;
   }) 
 
