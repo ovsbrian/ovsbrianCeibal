@@ -66,7 +66,7 @@ function comentarios (a){
      `     
   }
   document.getElementById(" comentarios_info_com").innerHTML  += html; 
-  dasdadad ()
+ 
   } 
 
   
@@ -87,25 +87,23 @@ function comentarios (a){
   function relacionadas (a){
     let art = "";
     art +=  `
-    <div class="card card_relacionada sssssss"  >
-        <div class="card-body" onclick="iracoso(${a.relatedProducts[0].id})">
-          <img src=" ${a.relatedProducts[0].image}" class="card-img-top" >
+    <div class="card card_relacionada caja_rel"  >
+        <div class="card-body" onclick="ir_a_relacionada(${a.relatedProducts[0].id})" >
+          <img src=" ${a.relatedProducts[0].image}" class="card-img-top" type="button">
           <h5 class="card-title"><b>${a.relatedProducts[0].name}</b></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
-      <div class="card card_relacionada sssssss"  >
-        <div class="card-body" onclick="iracoso(${a.relatedProducts[1].id})">
-          <img src="${a.relatedProducts[1].image} " class="card-img-top">
+      <div class="card card_relacionada caja_rel"  >
+        <div class="card-body" onclick="ir_a_relacionada(${a.relatedProducts[1].id})" >
+          <img src="${a.relatedProducts[1].image} " class="card-img-top" type="button" >
           <h5  class="card-title"><b>${a.relatedProducts[1].name}</b></h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
       `
     document.getElementById("art_relacion").innerHTML += art
 }
 
-function iracoso(id){
+function ir_a_relacionada(id){
 
   localStorage.setItem("identi", id);
   window.location.href = "product-info.html"
