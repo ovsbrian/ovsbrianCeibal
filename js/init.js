@@ -21,9 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
           </button> 
         
           <div class="dropdown-menu esp">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="cart.html">Mi carrito</a>
+            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item salir" onclick="salir()">Salir</a>
           </div>

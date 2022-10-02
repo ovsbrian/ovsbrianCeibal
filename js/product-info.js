@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
         { 
           let  data = resultObj.data
           infoDeProducts( data)
-          dasdadad (data) 
+          relacionadas (data) 
         }
     });
     getJSONData(`${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("identi")}${EXT_TYPE}`).then(function(resultObj){
@@ -84,7 +84,7 @@ function comentarios (a){
   }
 
 
-  function dasdadad (a){
+  function relacionadas (a){
     let art = "";
     art +=  `
     <div class="card card_relacionada sssssss"  >
