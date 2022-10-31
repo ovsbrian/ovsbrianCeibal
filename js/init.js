@@ -75,3 +75,6 @@ let getJSONData = function(url){
       localStorage.clear("perfil") 
       window.location.href = "index.html"
  }
+
+
+ 

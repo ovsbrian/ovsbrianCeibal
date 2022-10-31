@@ -51,9 +51,11 @@ function listaDeProductos(){
                         <div class="mb-1">
                             <h4> ${category.name}  -  ${category.currency} ${category.cost} </h4> 
                             <p> ${category.description} </p> 
+                            
                         </div>
-                        <small class="text-muted"> ${category.soldCount} vendidos</small> 
+                        <small class="text-muted m-0"> ${category.soldCount} vendidos</small> 
                     </div>
+               
                 </div>
             </div>  
         </div>
@@ -83,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function(){
         { 
              let array1 = resultObj.data  // Constante para ingresar al array
              let productoZ = array1.catName
-             document.getElementById("cat_name").innerHTML = productoZ 
+             document.getElementById("cat_name").innerHTML = productoZ.toLowerCase()
              array = array1.products  
              listaDeProductos(array)
         }
@@ -103,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         
         listaDeProductos()
-
+        
+        
     })
    
     document.getElementById("limpiarFiltro").addEventListener("click", function (){
