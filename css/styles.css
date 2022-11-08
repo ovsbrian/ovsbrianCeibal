@@ -502,3 +502,8 @@ main.carrito {
 .perfil-imgs label:hover{
   cursor: pointer;
 }
+
+.not-required.form-control.is-valid, .not-required.form-control.is-invalid, .was-validated .not-required.form-control:valid, .was-validated .not-required.form-control:invalid{
+  border-color: #000;
+  background-image: none;
+}

@@ -9,13 +9,17 @@ const EXT_TYPE = ".json";
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    
-      if (localStorage.getItem("perfil")){
+      let nombres = localStorage.getItem("perfil")
+      let nombreuser = localStorage.getItem("nombre")
+      if (nombres){
+        if (nombreuser){
+          nombres = nombreuser
+        }
         document.getElementById("user").innerHTML =  
         `
         <div class="btn-group">
          
-        <a href="my-profile.html"><button  type="button"class="btn cntr">${localStorage.getItem("perfil")}</button></a>
+        <a href="my-profile.html"><button  type="button"class="btn cntr">${nombres}</button></a>
           <button type="button" class="btn cntr dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="sr-only" ></span>
           </button> 
@@ -72,7 +76,7 @@ let getJSONData = function(url){
  
 
  function salir(){
-      localStorage.clear("perfil") 
+       
       window.location.href = "index.html"
  }
 

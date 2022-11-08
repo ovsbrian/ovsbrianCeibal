@@ -343,7 +343,12 @@ function subtotaldetodo(){
   let mostrarTotal = document.getElementById("subTotalFinal")
   
   for(productos of nuevosProductos){
-    let costoProductos = productos.cost  
+    let costoProductos = productos.cost 
+    console.log (productos.currency)
+    if (productos.currency === "UYU"){
+      costoProductos = costoProductos/40
+      
+    } 
     let totalProd = costoProductos* document.getElementById(`cantidad${productos.id}`).value
     total = total + totalProd
   }

@@ -65,49 +65,53 @@
             <input accept="image/png,image/jpeg" type="file" id="upload-img-user">
         </div>
         <div class="mt-3 mx-0 text-center ">
-          <p class=" ">Correo de usuario: <label id="correoPerfilUsuario"  class="  " ></label> </p>
-       
+          <p class=" ">Correo de usuario: <label id="correoPerfilUsuario">aaa</label> </p>
+        </div>
+        <div class="mt-3 mx-0 text-center" id="usuarioName">
         </div>
         <hr>
-         <form action="">
-          <div class="row align-items-center">
-            <div class="col ms-3">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="name@example.com" required>
-                <label for="floatingInput">Primer nombre*</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" class="form-control"   placeholder="Password" required>
-                <label for="floatingPassword">Primer Apellido*</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control"  placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-              </div>
+        <form class="row g-4 needs-validation " novalidate id="form-user">
+          <div class="col-md-5 position-relative mx-auto ">
+            <label for="validationTooltip01" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="validarPrimerNombre" placeholder="Ingrese su nombre"  required>
+            <div class="invalid-tooltip">
+              Looks good!
             </div>
-         
-            <div class="col me-3">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="name@example.com">
-                <label for="floatingInput">Segundo nombre</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" class="form-control"   placeholder="Password">
-                <label for="floatingPassword">Segundo Apellido</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control"  placeholder="name@example.com" required>
-                <label for="floatingInput">Télefono de contacto*</label>
-              </div>
-            </div>
-
-            <div class="">
-              <button class="float-end m-3 btn btn-danger" type="submit">Guardar</button>
-            </div>
-
           </div>
+          <div class="col-md-5 position-relative mx-auto">
+            <label for="validationTooltip01" class="form-label">Segundo nombre</label>
+            <input type="text" class="form-control not-required" id="validationTooltip01"  placeholder="Opcional"  >
+ 
+          </div>
+          <div class="col-md-5 position-relative mx-auto">
+            <label for="validationTooltip01" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="validarPrimerApellido" placeholder="Ingrese su apellido"  required>
+            <div class="invalid-tooltip">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 position-relative mx-auto">
+            <label for="validationTooltip01" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control not-required" id="validationTooltip01"  placeholder="Opcional"  >
+          
+          </div>
+          <div class="col-md-5 position-relative mx-auto">
+            <label for="validationTooltip01" class="form-label">Teléfono de contacto</label>
+            <input type="text" class="form-control not-required" id="validationTooltip01"  placeholder="Opcional"  >
+            
+          </div>
+          <div class="col-md-5 position-relative mx-auto  ">
+            <label for="validationTooltip01" class="form-label">Correo electrónico</label>
+            <input type="text" class="form-control not-required" id="correoPerfilUsuarioin" disabled>
+         
+          </div>
+          
+          <div>
+            <button class="btn btn-dark float-end mb-5 mt-3 me-5 p-2 " style="width:130px ;" type="submit">aaaaa</button>
+          </div>
+          
+       
         </form>
-   
       </div>
     
     
