@@ -11,9 +11,10 @@ const EXT_TYPE = ".json";
 document.addEventListener("DOMContentLoaded", function() {
       let nombres = localStorage.getItem("perfil")
       let nombreuser = localStorage.getItem("nombre")
+      let apellidouser = localStorage.getItem("apellido")
       if (nombres){
         if (nombreuser){
-          nombres = nombreuser
+          nombres = nombreuser + " " + apellidouser
         }
         document.getElementById("user").innerHTML =  
         `

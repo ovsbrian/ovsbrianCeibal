@@ -2,6 +2,18 @@ let imagen = document.getElementById("imagen-del-usuario")
 const impPred = "img/img_perfil.png"
 let upload = document.getElementById("upload-img-user")
 const form = document.getElementById("form-user")
+ 
+
+document.getElementById("botonCambiar").addEventListener("click", () =>{
+    document.getElementById("validarPrimerNombre").disabled = false;
+    document.getElementById("segundoNombre").disabled = false;
+    document.getElementById("validarPrimerApellido").disabled = false;
+    document.getElementById("segundoApellido").disabled = false;
+    document.getElementById("telefonoContacto").disabled = false;
+})
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -9,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("correoPerfilUsuario").innerHTML = emailUserPerfil
     document.getElementById("correoPerfilUsuarioin").value = emailUserPerfil
   
-    nombreDelUsuario()
+    guardar()
     imgDelUsuario()
  
 })
@@ -41,23 +53,56 @@ upload.addEventListener("change", async (e) => {
 form.addEventListener('submit', function (event) {
     let primerNombre = document.getElementById("validarPrimerNombre").value 
     let primerApellido = document.getElementById("validarPrimerApellido").value 
+    let segundoNombre = document.getElementById("segundoNombre").value 
+    let segundoApellido = document.getElementById("segundoApellido").value 
+    let numero = document.getElementById("telefonoContacto").value 
+
 
     if (!primerApellido || !primerNombre) {
         event.preventDefault()
         event.stopPropagation()
     }else{
-        localStorage.setItem ("nombre", primerNombre + " " +primerApellido)
-        localStorage.setItem("imagen", imagen.src)
+        localStorage.setItem ("nombre", primerNombre )
+        localStorage.setItem ("apellido",  primerApellido)
+        localStorage.setItem("segundoNombre", segundoNombre)
+        localStorage.setItem("segundoApellido", segundoApellido)
+        localStorage.setItem("numero", numero)
+       
     }
     form.classList.add('was-validated')
 
 })
 
 
-function nombreDelUsuario(){
-    if(localStorage.getItem("nombre")){
-        document.getElementById("usuarioName").innerHTML = ` <p><label>Nombre de usuario: ${localStorage.getItem("nombre")} </label> </p> `
+function guardar(){
+    let primerNombre =  localStorage.getItem("nombre")
+    let primerApellido = localStorage.getItem("apellido")
+    let segundoNombre = localStorage.getItem("segundoNombre")
+    let segundoApellido = localStorage.getItem("segundoApellido")
+    let numero = localStorage.getItem("numero")
+
+    if(primerNombre){
+        document.getElementById("usuarioName").innerHTML = ` <p><label>Nombre de usuario: ${primerNombre} ${primerApellido}</label> </p> `
+        document.getElementById("validarPrimerNombre").value = primerNombre
+        document.getElementById("validarPrimerApellido").value = primerApellido
     }
+
+   if (segundoNombre){
+     document.getElementById("segundoNombre").value = segundoNombre
+   }
+   if (segundoApellido){
+    document.getElementById("segundoApellido").value = segundoApellido
+  }
+  if (numero){
+    document.getElementById("telefonoContacto").value = numero
+  }
+
+
+
+
+
+
+
 }
 
 function imgDelUsuario(){
@@ -74,3 +119,5 @@ function perfilGuardado(){
     perfil.img = localStorage.getItem("imagen")
     perfil.name = localStorage.get("nombre")
 }
+
+ 
