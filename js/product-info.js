@@ -1,4 +1,5 @@
 let data
+
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(`${PRODUCT_INFO_URL}${localStorage.getItem("identi")}${EXT_TYPE}`).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -12,9 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resultObj.status === "ok") {
       let array_comentario_data = resultObj.data
       comentarios(array_comentario_data)
+  
     }
   });
-
+  localStorage.removeItem("comentario")
 })
 
 function infoDeProducts(a) {
@@ -84,7 +86,7 @@ function comentarios(a) {
     html +=
       `
       <div  class="comentarios_comunidad"><b>${a[i].user}</b> - ${a[i].dateTime} - <div class="estrella_div">${estrellas(a[i].score)}</div> 
-        <br> ${a[i].description} 
+        <p class="pt-3 ps-2"> ${a[i].description} </p>
       </div>  
      `
   }
@@ -95,9 +97,47 @@ function comentarios(a) {
 
 document.getElementById("enviar_info_coment_com").addEventListener('click', function (e) {
   e.preventDefault()
-  document.getElementById("text_area_comen").value = "";
-  document.getElementById("select_numb").value = 1;
+  let comentarioUser = document.getElementById("text_area_comen").value 
+  let clasificacionUser = document.getElementById("select_numb").value 
+  
+  if (localStorage.getItem("comentario")){
+    alert("no podes comentar 2 veces")
+    
+  }else{
+    localStorage.setItem ("comentario", comentarioUser)
+    localStorage.setItem ("clasificacion", clasificacionUser)
+    vercomentarios ()
+  }
+ 
 })
+ 
+function vercomentarios (){
+  let a = localStorage.getItem("comentario")
+  let b = localStorage.getItem("clasificacion")
+  let c = localStorage.getItem ("perfil")
+  let d = localStorage.getItem ("nombre")
+  let e
+ 
+  if (d){
+    e = d
+  }else {
+    e = c
+  }
+  
+  let html =""
+  html +=  `
+    <div  class="comentarios_comunidad"><b>${e}</b> ${tomarHora()} <div class="estrella_div">${estrellas(b)}</div> 
+      <p class="pt-3 ps-2"> ${a} </p>
+    </div>  
+  `
+ 
+  document.getElementById(" comentarios_info_com").innerHTML += html;
+ } 
+  
+ 
+
+
+
 
 function estrellas(puntaje) {
   let estrellas_c = ""
@@ -107,11 +147,32 @@ function estrellas(puntaje) {
 }
 
 
+
+function tomarHora(){
+  
+  const h = new Date();
+  const hora = ((h.getHours() < 10)? "0" : "") + h.getHours ();
+  const minuto = ((h.getMinutes() < 10)? "0" : "") + h.getMinutes ();
+  const segundos = ((h.getSeconds() < 10)? "0" : "") + h.getSeconds ();
+  const dia =  h.getUTCDate() 
+  const mes = (h.getMonth() + 1) 
+  const año = h.getFullYear()
+
+
+  return (`-` +  " " + año + `-` + mes+ `-` + dia +  " " + hora + `:` + minuto + `:` + segundos + " " + `-`) 
+}
+
+
+
+
+
+
+
+
+
+
 function relacionadas(a) {
   let art = "";
-
-
-
   art += `
     
     <div class="card card_relacionada caja_rel"  >
@@ -128,6 +189,7 @@ function relacionadas(a) {
       </div>
       `
   document.getElementById("art_relacion").innerHTML += art
+  
 }
 
 function ir_a_relacionada(id) {

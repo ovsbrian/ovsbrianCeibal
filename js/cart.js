@@ -50,7 +50,7 @@ function carrito_de_compra() {
           <tbody>
             `
     for (var i = 0; i < nuevosProductos.length; i++) {
-      console.log(  `cantidad${nuevosProductos[i].id}  `)
+  
       html += `
               <tr>
                 <th scope="row "  style="margin:0;width:100px; padding-right:20px"> <img class="h-25 rounded" style="width:100px;"src="${nuevosProductos[i].image}"> </th>
@@ -63,13 +63,14 @@ function carrito_de_compra() {
                 
                 
                 </td>
-                <td id="subtotalProd-${nuevosProductos[i].id}" style="width:200px" class="text-center" > ${nuevosProductos[i].currency} 
-               ${nuevosProductos[i].count * nuevosProductos[i].cost}   </td>
+                <td id="subtotalProd-${nuevosProductos[i].id}" style="width:200px" class="text-center" > </td>
                 <td><button class="btn btn-outline-danger my-auto " onclick="remove(event)" > Eliminar</button></td>
               </tr> 
                   `
+             
+    }
 
-    } html += `
+    html += `
           </tbody>
         </table>
       </div>
@@ -220,7 +221,7 @@ function carrito_de_compra() {
 
    
     
-
+    
 
 
 
@@ -341,16 +342,17 @@ function subtotaldetodo(){
   let envio = 0;
   let precioFinal = document.getElementById("precioFinal")
   let mostrarTotal = document.getElementById("subTotalFinal")
-  
+ 
   for(productos of nuevosProductos){
     let costoProductos = productos.cost 
-    console.log (productos.currency)
+     
     if (productos.currency === "UYU"){
-      costoProductos = costoProductos/40
-      
+      costoProductos = costoProductos/40  
     } 
     let totalProd = costoProductos* document.getElementById(`cantidad${productos.id}`).value
+    
     total = total + totalProd
+    document.getElementById(`subtotalProd-${productos.id}`).innerHTML = `$ ${totalProd}`
   }
 
   if (check1.checked){
@@ -363,4 +365,6 @@ function subtotaldetodo(){
   mostrarTotal.innerHTML = total
   val.innerHTML = Math.round(envio)
   precioFinal.innerHTML = total+envio
+
+  
 }
