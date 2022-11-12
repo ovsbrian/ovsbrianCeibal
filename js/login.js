@@ -19,7 +19,9 @@ ver.addEventListener("click", function(){
 })
 
 function jwtDecode (res){
- console.log (decode(res.credential))
+    let user = decode(res.credential)
+    localStorage.setItem ("perfil", user.email)
+    window.location.href = "inicio.html"
 }
 function decode(token) {
     var base64Url = token.split('.')[1];
