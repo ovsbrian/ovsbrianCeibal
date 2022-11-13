@@ -35,12 +35,10 @@ function decode(token) {
 
 
 // Función para validar la entrada del usuario
-document.addEventListener("DOMContentLoaded", function() {
+ 
+document.getElementById("boton").addEventListener('click', validarFormulario); 
     
-    document.getElementById("form_login").addEventListener('submit', validarFormulario); 
-    
-  
-});
+ 
 
 
 
