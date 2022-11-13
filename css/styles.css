@@ -197,67 +197,11 @@ a.custom-card:hover {
 
 
 /* Formulario de ingreso */
-.container_login{
-    width: 600px;
-    position: relative;
-    margin: auto;
  
-    padding: 25px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.logo_img{
-    width: 250px;
-    margin-bottom: 80px;
-}
-
-.form{
-    padding: 10px;
-}
-
-.form__usuario,
-.form__clave{
-    width: 100%;
-    margin-bottom: 40px;
-    position: relative;
-    
-}
-.usuario, .clave{
-    width: 100%;
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    border-bottom: solid #222 2px;
-    background-color: rgb(248 , 249, 250) ;
-}
-.ver_clave{
-    position: absolute;
-    right: 10px;
-    bottom: 30px;
-    cursor: pointer;
-    font-size: 20px;
-}
-.boton{
-    background: green;
-    padding: 15px 25px;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-h1{
-    text-align: center;
-    padding: 20px;
-    color: rgba(0, 0, 0, 0.76);
-}
-.form__boton{
-    display: flex;
-    justify-content: flex-start;
-}
-.boton:hover{
-    background:   rgb(58, 155, 58);
-}
+ 
+ 
+ 
+ 
 
 /* error */
 .formulario__input-error {
