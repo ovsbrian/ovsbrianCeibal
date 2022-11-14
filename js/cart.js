@@ -9,10 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let nuevosProductos = JSON.parse(localStorage.getItem("arrayCarrito"))
 
-function carrito_de_compra() {
-  
-
-  if (nuevosProductos === null) {
+function carrito_de_compra(a) {
+  if (nuevosProductos.length === 0) {
     let html = ""
 
     html += ` 
@@ -25,37 +23,13 @@ function carrito_de_compra() {
       `
     document.getElementById("container_cart").innerHTML = html
   } else {
-
-
-
-
     let html = ""
-
-    html += ` 
-       
-      <div class="row mt-5 rounded" style=" height:100%; background-color:#f1eeee;">
-        <div class="col-lg-8 col-md-12 col-sm-12 ">
-        <div class="bg-light mt-5 rounded-3 d-flex"  > 
-        <table class="table " >
-          <thead>
-            <tr class="table-dark">
-              <th scope="col"> </th>
-              <th scope="col" class="text-center">Nombre</th>
-              <th scope="col" class="text-center">Costo</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col" class="text-center">Subtotal</th>
-              <th scope="col"> </th>
-            </tr>
-          </thead>
-          <tbody>
-            `
     for (var i = 0; i < nuevosProductos.length; i++) {
-  
       html += `
               <tr>
                 <th scope="row "  style="margin:0;width:100px; padding-right:20px"> <img class="h-25 rounded" style="width:100px;"src="${nuevosProductos[i].image}"> </th>
                 <td class="text-center">${nuevosProductos[i].name}</td>
-                <td style="width:300px" class="text-center"  id="costoProduct-${nuevosProductos[i].id}">${nuevosProductos[i].currency} ${nuevosProductos[i].cost}</td>
+                <td style="width:300px" class="text-center"  id="costoProduct-${nuevosProductos[i].id}">${nuevosProductos[i].currency}  ${nuevosProductos[i].cost}</td>
                 <td>
                
                 <input style="width:100px" type="number" min="1"  id="cantidad${nuevosProductos[i].id}" placeholder="1" value="1" onclick="subtotaldetodo()">
@@ -64,168 +38,12 @@ function carrito_de_compra() {
                 
                 </td>
                 <td id="subtotalProd-${nuevosProductos[i].id}" style="width:200px" class="text-center" > </td>
-                <td><button class="btn btn-outline-danger my-auto " onclick="remove(event)" > Eliminar</button></td>
+                <td><button class="btn btn-outline-danger my-auto   " onclick="remove(${nuevosProductos[i].id})" > Eliminar</button></td>
               </tr> 
                   `
              
     }
-
-    html += `
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-12 col-sm-12 rounded-end  ">
- 
-      <div class="bg-light  mt-5 rounded-3 "   >  
-       
-        <h5 class="text-center p-2 bg-dark text-light"><b>Tipo de envío</b></h5>
-   
-        <div class="m-1 p-2">
-
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="premium" value="option1"  onclick="subtotaldetodo()">
-            <label class="form-check-label" for="premium">
-                Premium 2 a 5 días (15%)
-            </label>
-          </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="express" value="option2"  onclick="subtotaldetodo()">
-            <label class="form-check-label" for="express">
-              Express 5 a 8 días (7%)
-            </label>
-          </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="standar" value="option3" onclick=" subtotaldetodo()" checked>
-            <label class="form-check-label" for="standar">
-              Standard 12 a 15 días (5%)
-            </label>
-          </div>
-      </div>
-  
-      <h5 class="text-center p-2"><b>Dirección de envío</b></h5>
-      <form class="needs-validation" novalidate id="formulario">
-        <div class="m-1 p-2" style=" width: 60%">
-          <label class="form-label">Calle</label>
-          <input type="text" id="inputCalle" class="form-control"  required>
-
-          <div class="invalid-feedback">
-            Debe ingresar un calle.
-          </div>
-
-          <label class="form-label pt-2">Número</label>
-          <input type="number" id="inputNumero" class="form-control" required >
-
-          <div class="invalid-feedback">
-            Debe ingresar un número.
-          </div>
-
-          <label class="form-label pt-2">Esquina</label>
-
-          <input type="text" id="inputEsquina" class="form-control" required >
-          
-          <div class="invalid-feedback">
-            Debe ingresar una esquina.
-          </div>
-        </div>
-      </form>
-
-      <ul class="list-group d-flex">
-        <li class="list-group-item">SubTotal: <label class="float-end" id="subTotalFinal"></label></li> 
-        <li class="list-group-item">Costo de envio<label class="float-end" id="costoEnvio"></label></li>
-        <li class="list-group-item">Total ($) <label class="float-end" id="precioFinal"></label></li>
-        <li class="list-group-item">
-          <b>Forma de Pago</b>
-          <a class=" btn-link" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="metodoPago">
-            Seleccionar método de pago
-          </a>
-          <small class="invalid-feedback text-danger" id="errorCheck">
-            Debe ingresar un método de pago.
-          </small>  
-        </li>
-      </ul>
-          <!-- Modal -->
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel" ><b>Forma de pago</b></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <form class="needs-validation" novalidate id="form-pago">
-                  <div class="modal-body">
-                    <div class="form-check m-3 ">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="credito" value="option1"required >
-                      <label class="form-check-label"  for="credito">
-                          Tarjeta de crédito
-                      </label>
-                      <hr class="me-3">
-                      
-                        <label label class="p-1" > Número de tarjeta</label>
-                        <input  id="numTargeta" maxlength="10" type="text" onKeyPress="return soloNumeros(event)" class="form-control" required>
-            
-                        
-                        <label class="p-1" style="width:35%">Código de seg.</label>
-                          <input id="codSeg" maxlength="3" type="text" onKeyPress="return soloNumeros(event)" class="form-control"required>
-
-                      
-                        <label class="p-1"  >Vencimiento (MM/AA)</label>
-                        <input id="venc" maxlength="4" type="text" onKeyPress="return soloNumeros(event)" class="form-control"required>
-                    
-                    </div>
-                    <div class="m-3 form-check">
-                    
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="radioBanco" value="option3"  required>
-                      <label class=" form-check-label " for="radioBanco">  Transferencia bancaria  </label>
-                    
-                      <hr class="me-3">
-                      <label class="p-1"  >Número de cuenta </label>
-                      <input id="bancaria" maxlength="20" minlength="20" type="text" onKeyPress="return soloNumeros(event)" class="form-control" required>
-
-                    </div>
-              
-                  </div>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" id="boton-metodoPago">Siguiente</button>
-                    </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        <button class="btn btn-secondary" id="boton-pago" type="submit"  >  Confirmar compra </button>
-       </div>
-    </div>
-
-      <div class="alert alert-success d-none" role="alert" id="alertaCompra">
-    
-        <h4 class="alert-heading">Su compra ha sido realizada con éxito!</h4>
-    
-      </div>
-
-    </div>
-  
-    `
-
-
-
-    document.getElementById("container_cart").innerHTML = html
-
-    
-
-    
-
-   
-    
-    
-
-
-
-
+    document.getElementById("listaProductosCompra").innerHTML = html
   }
 
 
@@ -352,7 +170,7 @@ function subtotaldetodo(){
     let totalProd = costoProductos* document.getElementById(`cantidad${productos.id}`).value
     
     total = total + totalProd
-    document.getElementById(`subtotalProd-${productos.id}`).innerHTML = `$ ${totalProd}`
+    document.getElementById(`subtotalProd-${productos.id}`).innerHTML = `USD ${Math.round(totalProd)}  `
   }
 
   if (check1.checked){
@@ -362,9 +180,26 @@ function subtotaldetodo(){
   }if(check3.checked){
     envio =  total*(5/100)
   }
-  mostrarTotal.innerHTML = total
+  mostrarTotal.innerHTML = Math.round(total)
   val.innerHTML = Math.round(envio)
-  precioFinal.innerHTML = total+envio
+  precioFinal.innerHTML = Math.round(total+envio)
 
   
 }
+ 
+ function remove(id){
+  const foundId = nuevosProductos.find((element) => element.id === id);
+  console.log(nuevosProductos)
+  let idssss = nuevosProductos.id
+  nuevosProductos = nuevosProductos.filter((idssss) =>  {
+    return idssss !== foundId
+   
+  })
+  localStorage.setItem ("arrayCarrito", JSON.stringify(nuevosProductos))
+  carrito_de_compra(nuevosProductos)
+  console.log(nuevosProductos)
+  subtotaldetodo()
+ }
+ 
+ 
+ 

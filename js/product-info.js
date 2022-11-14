@@ -216,7 +216,7 @@ function colocarEnCarrito() {
   }
 
 
-  if (JSON.parse(localStorage.getItem("arrayCarrito"))) {
+  if ( (localStorage.getItem("arrayCarrito")  ) ) {
 
     let listaDeDeseados = JSON.parse(localStorage.getItem("arrayCarrito"))
 
