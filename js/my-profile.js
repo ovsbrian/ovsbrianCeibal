@@ -44,6 +44,7 @@ upload.addEventListener("change", async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
     imagen.src = base64;
+    localStorage.setItem("imagen", imagen.src)
     
 })
 
@@ -61,6 +62,7 @@ form.addEventListener('submit', function (event) {
     if (!primerApellido || !primerNombre) {
         event.preventDefault()
         event.stopPropagation()
+        form.classList.add('was-validated')
     }else{
         localStorage.setItem ("nombre", primerNombre )
         localStorage.setItem ("apellido",  primerApellido)
@@ -69,7 +71,7 @@ form.addEventListener('submit', function (event) {
         localStorage.setItem("numero", numero)
        
     }
-    form.classList.add('was-validated')
+   
 
 })
 
@@ -96,12 +98,6 @@ function guardar(){
   if (numero){
     document.getElementById("telefonoContacto").value = numero
   }
-
-
-
-
-
-
 
 }
 
