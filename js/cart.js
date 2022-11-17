@@ -32,7 +32,7 @@ function carrito_de_compra(a) {
                 <td style="width:300px" class="text-center"  id="costoProduct-${nuevosProductos[i].id}">${nuevosProductos[i].currency}  ${nuevosProductos[i].cost}</td>
                 <td>
                
-                <input style="width:100px" type="number" min="1"  id="cantidad${nuevosProductos[i].id}" placeholder="1" value="1" onclick="subtotaldetodo()">
+                <input style="width:100px" type="number" min="1"  id="cantidad${nuevosProductos[i].id}"  value="${nuevosProductos[i].count}" onclick="subtotaldetodo()">
                
                 
                 

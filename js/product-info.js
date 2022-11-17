@@ -1,5 +1,5 @@
 let data
-
+let container = document.getElementById("container_prod_inf")
 document.addEventListener("DOMContentLoaded", function () {
   getJSONData(`${PRODUCT_INFO_URL}${localStorage.getItem("identi")}${EXT_TYPE}`).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resultObj.status === "ok") {
       let array_comentario_data = resultObj.data
       comentarios(array_comentario_data)
-  
+
     }
   });
   localStorage.removeItem("comentario")
@@ -68,12 +68,8 @@ function infoDeProducts(a) {
       </div>
 
        `
-
-
-
-
-  document.getElementById("container_prod_inf").innerHTML += htmlContentToAppend;
-  document.getElementById("container_prod_inf").innerHTML += contenido;
+  container.innerHTML += htmlContentToAppend;
+  container.innerHTML += contenido;
 }
 
 
@@ -91,53 +87,46 @@ function comentarios(a) {
      `
   }
   document.getElementById(" comentarios_info_com").innerHTML += html;
-
 }
 
 
 document.getElementById("enviar_info_coment_com").addEventListener('click', function (e) {
   e.preventDefault()
-  let comentarioUser = document.getElementById("text_area_comen").value 
-  let clasificacionUser = document.getElementById("select_numb").value 
-  
-  if (localStorage.getItem("comentario")){
+  let comentarioUser = document.getElementById("text_area_comen").value
+  let clasificacionUser = document.getElementById("select_numb").value
+
+  if (localStorage.getItem("comentario")) {
     alert("no podes comentar 2 veces")
-    
-  }else{
-    localStorage.setItem ("comentario", comentarioUser)
-    localStorage.setItem ("clasificacion", clasificacionUser)
-    vercomentarios ()
+
+  } else {
+    localStorage.setItem("comentario", comentarioUser)
+    localStorage.setItem("clasificacion", clasificacionUser)
+    vercomentarios()
   }
- 
+
 })
- 
-function vercomentarios (){
+
+function vercomentarios() {
   let a = localStorage.getItem("comentario")
   let b = localStorage.getItem("clasificacion")
-  let c = localStorage.getItem ("perfil")
-  let d = localStorage.getItem ("nombre")
+  let c = localStorage.getItem("perfil")
+  let d = localStorage.getItem("nombre")
   let e
- 
-  if (d){
+
+  if (d) {
     e = d
-  }else {
+  } else {
     e = c
   }
-  
-  let html =""
-  html +=  `
+
+  let html = ""
+  html += `
     <div  class="comentarios_comunidad"><b>${e}</b> ${tomarHora()} <div class="estrella_div">${estrellas(b)}</div> 
       <p class="pt-3 ps-2"> ${a} </p>
     </div>  
   `
- 
   document.getElementById(" comentarios_info_com").innerHTML += html;
- } 
-  
- 
-
-
-
+}
 
 function estrellas(puntaje) {
   let estrellas_c = ""
@@ -148,33 +137,23 @@ function estrellas(puntaje) {
 
 
 
-function tomarHora(){
-  
+function tomarHora() {
+
   const h = new Date();
-  const hora = ((h.getHours() < 10)? "0" : "") + h.getHours ();
-  const minuto = ((h.getMinutes() < 10)? "0" : "") + h.getMinutes ();
-  const segundos = ((h.getSeconds() < 10)? "0" : "") + h.getSeconds ();
-  const dia =  h.getUTCDate() 
-  const mes = (h.getMonth() + 1) 
+  const hora = ((h.getHours() < 10) ? "0" : "") + h.getHours();
+  const minuto = ((h.getMinutes() < 10) ? "0" : "") + h.getMinutes();
+  const segundos = ((h.getSeconds() < 10) ? "0" : "") + h.getSeconds();
+  const dia = h.getUTCDate()
+  const mes = (h.getMonth() + 1)
   const año = h.getFullYear()
 
 
-  return (`-` +  " " + año + `-` + mes+ `-` + dia +  " " + hora + `:` + minuto + `:` + segundos + " " + `-`) 
+  return (`-` + " " + año + `-` + mes + `-` + dia + " " + hora + `:` + minuto + `:` + segundos + " " + `-`)
 }
-
-
-
-
-
-
-
-
-
 
 function relacionadas(a) {
   let art = "";
   art += `
-    
     <div class="card card_relacionada caja_rel"  >
         <div onclick="ir_a_relacionada(${a.relatedProducts[0].id})" >
           <img src=" ${a.relatedProducts[0].image}" class=" exp_img" type="button">
@@ -189,14 +168,11 @@ function relacionadas(a) {
       </div>
       `
   document.getElementById("art_relacion").innerHTML += art
-  
 }
 
 function ir_a_relacionada(id) {
-
   localStorage.setItem("identi", id);
   window.location.href = "product-info.html"
-
 }
 
 
@@ -204,6 +180,15 @@ function ir_a_relacionada(id) {
 
 function colocarEnCarrito() {
 
+  let alertaComprar = ""
+  alertaComprar = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+    El producto seleccionado se ha añadido a su <strong>carrito</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`
+    
+    container.innerHTML += alertaComprar 
+ 
+    
   let count = parseInt(document.getElementById("count").value)
   let nv = {
     soldCount: data.soldCount,
@@ -214,9 +199,7 @@ function colocarEnCarrito() {
     count: count,
     image: data.images[0]
   }
-
-
-  if ( (localStorage.getItem("arrayCarrito")  ) ) {
+  if ((localStorage.getItem("arrayCarrito"))) {
 
     let listaDeDeseados = JSON.parse(localStorage.getItem("arrayCarrito"))
 

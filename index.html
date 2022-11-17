@@ -39,6 +39,9 @@
               <input type="email" class="form-control" id="usuario" required placeholder="Ingrese su email"
                 oninvalid="this.setCustomValidity('Por favor ingrese un correo electrónico valido')"
                 oninput="this.setCustomValidity('')">
+                <div class="invalid-feedback">
+                  Debe un correo válido.
+                </div>
             </div>
 
             <div class="mb-3">
@@ -47,6 +50,9 @@
               <input id="clave" type="password" class="form-control" required placeholder="Ingrese contraseña"
                 oninvalid="this.setCustomValidity('Por favor ingrese su contraseña')"
                 oninput="this.setCustomValidity('')">
+                <div class="invalid-feedback">
+                  Debe ingresar una contraseña.
+                </div>
 
             </div>
             <div>

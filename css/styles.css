@@ -444,4 +444,6 @@ main.carrito {
   background-image: none;
 }
 
- 
+.filtro {
+  display: none;
+}

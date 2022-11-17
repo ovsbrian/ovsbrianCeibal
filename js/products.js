@@ -36,21 +36,20 @@ function listaDeProductos(){
     for(let i = 0; i < array.length; i++){ 
         let category = array [i];
         
-         if (((mini == undefined && maxi == undefined) || (mini == undefined && category.cost <= maxi))  ||
-            ((maxi == undefined && category.cost >= mini)) ||(category.cost <= maxi && category.cost >= mini)){
+         if (((!mini  && !maxi ) || (!mini && category.cost <= maxi))||((!maxi && category.cost >= mini)) ||(category.cost <= maxi && category.cost >= mini)){
         
         htmlContentToAppend += `
  
-        <div class="list-group-item list-group-item-action" onclick="info_Pro(${category.id})" role="button" >
-            <div class="row">
-                <div class="col-3">
+        <div class="list-group-item list-group-item-action buscadorElement " onclick="info_Pro(${category.id})" role="button" >
+            <div class="row ">
+                <div class="col-3 ">
                     <img src ="${category.image} " alt="product image" class="img-thumbnail">
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
+                <div class="col ">
+                    <div class="d-flex w-100 justify-content-between  " >
                         <div class="mb-1">
-                            <h4> ${category.name}  -  ${category.currency} ${category.cost} </h4> 
-                            <p> ${category.description} </p> 
+                            <h4 class="nombreProducto"> ${category.name}</h4>  <label class="h5">${category.currency} ${category.cost}</label> 
+                            <p class="descripcionProducto"> ${category.description} </p> 
                             
                         </div>
                         <small class="text-muted m-0"> ${category.soldCount} vendidos</small> 
@@ -144,4 +143,17 @@ function info_Pro(id){
     window.location.href = "product-info.html"
 }
 
+///
  
+
+let buscadorInput = document.getElementById("buscador")
+
+buscadorInput.addEventListener("keyup", e => {
+    
+    if (e.target.matches("#buscador")){
+       document.querySelectorAll(".buscadorElement").forEach(articulos => {
+        articulos.textContent.toLowerCase().includes(e.target.value)
+        ? articulos.classList.remove ("filtro"): articulos.classList.add("filtro")
+       })
+    }
+} )

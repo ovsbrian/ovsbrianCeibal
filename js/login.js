@@ -1,27 +1,27 @@
-let ver=document.getElementById("ver");
-let clave=document.getElementById("clave")
-let icono=document.getElementById("icono")
-let con=true
+let ver = document.getElementById("ver");
+let clave = document.getElementById("clave")
+let icono = document.getElementById("icono")
+let con = true
 
 
 // para ver o ocultar contra 
 
-ver.addEventListener("click", function(){
-    if (con==true) {
-        clave.type="text"
+ver.addEventListener("click", function () {
+    if (con == true) {
+        clave.type = "text"
         icono.classList.add("fa-eye-slash")
-        con=false
+        con = false
     } else {
-        clave.type="password"
+        clave.type = "password"
         icono.classList.remove("fa-eye-slash")
-        con=true
+        con = true
     }
 })
 
-function jwtDecode (res){
+function jwtDecode(res) {
     console.log("aa")
     let user = decode(res.credential)
-    localStorage.setItem ("perfil", user.email)
+    localStorage.setItem("perfil", user.email)
     window.location.href = "inicio.html"
 }
 function decode(token) {
@@ -35,23 +35,32 @@ function decode(token) {
 
 
 // Función para validar la entrada del usuario
- 
-document.getElementById("boton").addEventListener('click', validarFormulario); 
-    
- 
 
+document.getElementById("boton").addEventListener('click', validarFormulario);
+
+
+
+let form = document.getElementById("form_login")
+
+
+function validarEmail(valor) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){
+      return true
+    } else {
+     return false
+    }
+  }
 
 
 function validarFormulario(e) {
-    e.preventDefault(); 
-    var usuario = document.getElementById('usuario').value.replace(/\s/gi,'');
-    var clave = document.getElementById('clave').value.replace(/\s/gi,''); // Elimina los espacios en blanco
-    if(usuario.length == 0 && clave.length == 0  ) {
-      return false;
-    }  else {
-        localStorage.setItem("perfil",usuario)
-        window.location.href = "inicio.html"
-    } 
-    
-  } 
+    e.preventDefault();
+    var usuario = document.getElementById('usuario').value;
+    var clave = document.getElementById('clave').value.replace(/\s/gi, ''); // Elimina los espacios en blanco
+   
+    if ( validarEmail(usuario)  == false   ) {
+       alert("mal")
+    } else {
+        alert("bien")
+    }
+}
 
