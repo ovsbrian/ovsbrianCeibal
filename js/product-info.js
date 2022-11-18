@@ -59,7 +59,7 @@ function infoDeProducts(a) {
         </div>
         </div>
       
-        <div class="as">
+        <div class="img_crsel">
           <img src="${a.images[0]}" class="active img_crsel_as" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" role="button">
           <img src="${a.images[1]}" class="active img_crsel_as" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" role="button">
           <img src="${a.images[2]}" class="active img_crsel_as" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"  role="button">

@@ -42,25 +42,20 @@ document.getElementById("boton").addEventListener('click', validarFormulario);
 
 let form = document.getElementById("form_login")
 
-
-function validarEmail(valor) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){
-      return true
-    } else {
-     return false
-    }
-  }
-
+ 
+ 
 
 function validarFormulario(e) {
     e.preventDefault();
     var usuario = document.getElementById('usuario').value;
     var clave = document.getElementById('clave').value.replace(/\s/gi, ''); // Elimina los espacios en blanco
-   
-    if ( validarEmail(usuario)  == false   ) {
-       alert("mal")
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if ( emailRegex.test(usuario ) === false || !clave ) {
+        form.classList.add('was-validated')
+        return false;
     } else {
-        alert("bien")
+        localStorage.setItem("perfil", usuario)
+        window.location.href = "inicio.html"
     }
 }
 

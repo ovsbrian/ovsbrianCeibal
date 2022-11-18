@@ -1,4 +1,4 @@
-let imagen = document.getElementById("imagen-del-usuario")
+let imagen = document.getElementById("imagen_del_usuario")
 const impPred = "img/img_perfil.png"
 let upload = document.getElementById("upload-img-user")
 const form = document.getElementById("form-user")
@@ -18,9 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let emailUserPerfil = localStorage.getItem("perfil")
     document.getElementById("correoPerfilUsuario").innerHTML = emailUserPerfil
     document.getElementById("correoPerfilUsuarioin").value = emailUserPerfil
-
-    guardar()
+    
     imgDelUsuario()
+    guardar()
+    
 })
 
 const convertBase64 = (file) => {

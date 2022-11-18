@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-
-
+ 
   carrito_de_compra()
   subtotaldetodo()
+
 })
 
 
 let nuevosProductos = JSON.parse(localStorage.getItem("arrayCarrito"))
 
-function carrito_de_compra(a) {
-  if (nuevosProductos.length === 0) {
+function carrito_de_compra( ) {
+  if (!nuevosProductos || nuevosProductos.length === 0) {
     let html = ""
 
     html += ` 
@@ -46,6 +45,7 @@ function carrito_de_compra(a) {
     document.getElementById("listaProductosCompra").innerHTML = html
   }
 
+}
 
 
 
@@ -115,7 +115,7 @@ function carrito_de_compra(a) {
     numBanc.removeAttribute("disabled")
   })
 
-  credito.addEventListener("input", function () {
+    credito.addEventListener("input", function () {
     checked()
     let numBanc = document.getElementById("bancaria")
     numBanc.setAttribute("disabled", "true")
@@ -128,7 +128,6 @@ function carrito_de_compra(a) {
   })
 
 
-}
 
 
 
