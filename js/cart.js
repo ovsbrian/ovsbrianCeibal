@@ -188,15 +188,12 @@ function subtotaldetodo(){
  
  function remove(id){
   const foundId = nuevosProductos.find((element) => element.id === id);
-  console.log(nuevosProductos)
-  let idssss = nuevosProductos.id
-  nuevosProductos = nuevosProductos.filter((idssss) =>  {
-    return idssss !== foundId
-   
+  console.log(foundId)
+  nuevosProductos = nuevosProductos.filter((id) =>  {
+    return id !== foundId
   })
   localStorage.setItem ("arrayCarrito", JSON.stringify(nuevosProductos))
   carrito_de_compra(nuevosProductos)
-  console.log(nuevosProductos)
   subtotaldetodo()
  }
  

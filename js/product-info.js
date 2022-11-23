@@ -43,7 +43,6 @@ function infoDeProducts(a) {
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="${a.images[0]}" class="d-block w-100" alt="...">
-            
           </div>
           <div class="carousel-item">
             <img src="${a.images[1]}" class="d-block w-100" alt="...">
