@@ -19,7 +19,6 @@ ver.addEventListener("click", function () {
 })
 
 function jwtDecode(res) {
-    console.log("aa")
     let user = decode(res.credential)
     localStorage.setItem("perfil", user.email)
     window.location.href = "inicio.html"

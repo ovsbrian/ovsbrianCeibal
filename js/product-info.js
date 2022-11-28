@@ -175,8 +175,7 @@ function ir_a_relacionada(id) {
 }
 
 
-
-
+ 
 function colocarEnCarrito() {
 
   let alertaComprar = ""
@@ -189,6 +188,7 @@ function colocarEnCarrito() {
  
     
   let count = parseInt(document.getElementById("count").value)
+  console.log(count)
   let nv = {
     soldCount: data.soldCount,
     name: data.name,
